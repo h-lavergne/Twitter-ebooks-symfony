@@ -12,7 +12,7 @@ use Symfony\Component\Process\Process;
 class TwitterController extends AbstractController
 {
     /**
-     * @Route("/start-ebooks", name="twitter")
+     * @Route("/magic", name="twitter")
      */
     public function index(): Response
     {
