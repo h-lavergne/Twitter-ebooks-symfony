@@ -16,10 +16,18 @@ class TwitterController extends AbstractController
      */
     public function index(): Response
     {
-        $exec = exec('cd /var/www/twitter_ebooks && node -r esm test.js');
+        $datas = [];
+        exec('cd /var/www/twitter_ebooks && node -r esm test.js', $frames);
+
+        $frames = [];
+
+        foreach ($datas as $key => $string) {
+            $frames['index'] = $key;
+            $frames['text'] = $string;
+        }
 
         return $this->json([
-            'message' => $exec,
+            $frames
         ]);
     }
 }
