@@ -28,7 +28,7 @@ class TwitterController extends AbstractController
         }
 
         return $this->json([
-            $frames
+            "frames" => $frames
         ]);
     }
 }
