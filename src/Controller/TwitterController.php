@@ -19,6 +19,8 @@ class TwitterController extends AbstractController
         $datas = [];
         exec('cd /var/www/twitter_ebooks && node -r esm test.js', $frames);
 
+        dd($datas);
+
         $frames = [];
 
         foreach ($datas as $key => $string) {
