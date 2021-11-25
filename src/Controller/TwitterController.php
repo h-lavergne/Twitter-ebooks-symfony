@@ -14,17 +14,12 @@ class TwitterController extends AbstractController
     /**
      * @Route("/start-ebooks", name="twitter")
      */
-    public function index()
+    public function index(): Response
     {
+        $exec = exec('cd /var/www/twitter_ebooks && node -r esm test.js');
 
-        $pathToScript = "/var/www/twitter_ebooks";
-        $process = new Process(['node -r esm test.js', $pathToScript]);
-        $process->run();
-
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-
-        echo $process->getOutput();
+        return $this->json([
+            'message' => $exec,
+        ]);
     }
 }
