@@ -18,11 +18,13 @@ class TwitterController extends AbstractController
     {
         $datas = [];
         $frames = [];
+        $res = [];
         exec('cd /var/www/twitter_ebooks && node -r esm test.js', $datas);
 
         foreach ($datas as $key => $string) {
-            $frames['index'] = $key;
-            $frames['text'] = $string;
+            $res['index'] = $key;
+            $res['text'] = $string;
+            $frames[] = $res;
         }
 
         return $this->json([
